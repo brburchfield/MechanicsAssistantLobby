@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="69" id="meY-s0-Buw" customClass="CustomChecklistCell" customModule="MechanicsAssistantLobby" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="586" height="69"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="meY-s0-Buw" id="XRn-Uq-1Ao">
+                <rect key="frame" x="0.0" y="0.0" width="586" height="68.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="283-9P-y9w">
+                        <rect key="frame" x="0.0" y="0.5" width="586" height="68.5"/>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                        <color key="textColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="283-9P-y9w" firstAttribute="centerX" secondItem="XRn-Uq-1Ao" secondAttribute="centerX" id="Z9w-t1-rCe"/>
+                    <constraint firstItem="283-9P-y9w" firstAttribute="centerY" secondItem="XRn-Uq-1Ao" secondAttribute="centerY" id="kSG-ML-2zb"/>
+                    <constraint firstItem="283-9P-y9w" firstAttribute="height" secondItem="XRn-Uq-1Ao" secondAttribute="height" id="oPC-By-9Pg"/>
+                    <constraint firstItem="283-9P-y9w" firstAttribute="width" secondItem="XRn-Uq-1Ao" secondAttribute="width" id="syk-SW-bpd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="itemLabel" destination="283-9P-y9w" id="CHh-Oo-pTd"/>
+            </connections>
+            <point key="canvasLocation" x="70" y="-61.5"/>
+        </tableViewCell>
+    </objects>
+</document>
