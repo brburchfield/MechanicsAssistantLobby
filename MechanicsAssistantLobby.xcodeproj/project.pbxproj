@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8CADB99E2B25A780532799BD /* Pods_MechanicsAssistantLobbyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B8642BD19A172E9BE57D59C /* Pods_MechanicsAssistantLobbyUITests.framework */; };
+		D40AAD6D1F68A5A6001A65E3 /* EnterBusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40AAD6C1F68A5A6001A65E3 /* EnterBusinessViewController.swift */; };
 		D42AD18B1F4687F40008C318 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D42AD18A1F4687F40008C318 /* GoogleService-Info.plist */; };
 		D4F5B8621F44D317006E8DF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F5B8611F44D317006E8DF5 /* AppDelegate.swift */; };
 		D4F5B8641F44D317006E8DF5 /* VehicleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F5B8631F44D317006E8DF5 /* VehicleListViewController.swift */; };
@@ -50,6 +51,7 @@
 		7FA1606DD63FC97B594FD21F /* Pods-MechanicsAssistantLobbyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MechanicsAssistantLobbyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MechanicsAssistantLobbyUITests/Pods-MechanicsAssistantLobbyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AA575DB857E0A8228B9EC83A /* Pods-MechanicsAssistantLobbyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MechanicsAssistantLobbyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MechanicsAssistantLobbyUITests/Pods-MechanicsAssistantLobbyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C829C9C7D3B41330D95DCDE8 /* Pods_MechanicsAssistantLobbyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MechanicsAssistantLobbyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40AAD6C1F68A5A6001A65E3 /* EnterBusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterBusinessViewController.swift; sourceTree = "<group>"; };
 		D42AD18A1F4687F40008C318 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4F5B85E1F44D317006E8DF5 /* MechanicsAssistantLobby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MechanicsAssistantLobby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F5B8611F44D317006E8DF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				D42AD18A1F4687F40008C318 /* GoogleService-Info.plist */,
 				D4F5B8611F44D317006E8DF5 /* AppDelegate.swift */,
+				D40AAD6C1F68A5A6001A65E3 /* EnterBusinessViewController.swift */,
 				D4F5B8631F44D317006E8DF5 /* VehicleListViewController.swift */,
 				D4F5B8941F44E0D5006E8DF5 /* ChecklistViewController.swift */,
 				D4F5B8651F44D317006E8DF5 /* Main.storyboard */,
@@ -469,6 +472,7 @@
 			files = (
 				D4F5B8641F44D317006E8DF5 /* VehicleListViewController.swift in Sources */,
 				D4F5B8951F44E0D5006E8DF5 /* ChecklistViewController.swift in Sources */,
+				D40AAD6D1F68A5A6001A65E3 /* EnterBusinessViewController.swift in Sources */,
 				D4F5B8621F44D317006E8DF5 /* AppDelegate.swift in Sources */,
 				D4F5B86A1F44D318006E8DF5 /* MechanicsAssistantLobby.xcdatamodeld in Sources */,
 			);

@@ -26,9 +26,12 @@ public var currentID = ""
 class VehicleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //variable for a collection of data from Firebase
+    var tempVehicles = [DataSnapshot]()
     var vehicles = [DataSnapshot]()
     
+    @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +46,28 @@ class VehicleListViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.backgroundColor = UIColor(red:0.12, green:0.12, blue:0.12, alpha:1.0)
         self.tableView.register(UINib(nibName: "CustomVehicleCell", bundle: nil), forCellReuseIdentifier: "cell")
         
+        //load business logo and background color
+        //Decode logo image from base64 string
+        let dataDecoded : Data = Data(base64Encoded: currentBusinessLogo, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        logoView.image = decodedimage
+        
+        if currentBusinessColor == "0" {
+            backgroundImage.image = UIImage(named: "BackgroundBlue")
+        } else if currentBusinessColor == "1" {
+            backgroundImage.image = UIImage(named: "BackgroundRed")
+        } else if currentBusinessColor == "2" {
+            backgroundImage.image = UIImage(named: "BackgroundGreen")
+        } else if currentBusinessColor == "3" {
+            backgroundImage.image = UIImage(named: "BackgroundYellow")
+        } else if currentBusinessColor == "4" {
+            backgroundImage.image = UIImage(named: "BackgroundCyan")
+        } else if currentBusinessColor == "5" {
+            backgroundImage.image = UIImage(named: "BackgroundWhite")
+        } else {
+            backgroundImage.image = UIImage(named: "BackgroundBlue")
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,15 +75,27 @@ class VehicleListViewController: UIViewController, UITableViewDataSource, UITabl
         let ref = Database.database().reference(withPath: "vehicles")
         // Listen for vehicles added to the Firebase database
         ref.observe(.value, with: { (snapshot) -> Void in
+            self.tempVehicles = []
             self.vehicles = []
             
-            //add vehicles to vehicles variable
-            for item in snapshot.children{
-                self.vehicles.append(item as! DataSnapshot)
+            //add vehicles to tempVehicles variable
+            for item in snapshot.children {
+                self.tempVehicles.append(item as! DataSnapshot)
             }
             
-            //After 1 second, reload table view data
-            self.delayWithSeconds(1){
+            self.delayWithSeconds(1) {
+                for item in self.tempVehicles {
+                    let value = item.value as? NSDictionary
+                    let business = value?["business"] as? String ?? ""
+                    let location = value?["location"] as? String ?? ""
+                    if business == currentBusinessID && location == currentBusinessLocation {
+                        self.vehicles.append(item)
+                    }
+                }
+            }
+            
+            //After 2 seconds, reload table view data
+            self.delayWithSeconds(2) {
                 self.tableView.reloadData()
             }
         })
@@ -100,7 +137,6 @@ class VehicleListViewController: UIViewController, UITableViewDataSource, UITabl
         
         //get statuses and check their values. For each value completed, add 1 to completionNumber variable
         let completionStatuses = value?["statuses"] as? NSDictionary
-        print(completionStatuses ?? "")
         for (_, value) in completionStatuses! {
             
             //add 1 to total statuses
@@ -160,6 +196,10 @@ class VehicleListViewController: UIViewController, UITableViewDataSource, UITabl
         //set currentID to selected vehicle's ID
         currentID = vehicles[indexPath.row].key
         
+    }
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
