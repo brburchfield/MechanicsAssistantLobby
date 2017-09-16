@@ -32,6 +32,7 @@ class VehicleListViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +72,8 @@ class VehicleListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         //Setup Firebase reference variables
         let ref = Database.database().reference(withPath: "vehicles")
         // Listen for vehicles added to the Firebase database
@@ -96,6 +99,8 @@ class VehicleListViewController: UIViewController, UITableViewDataSource, UITabl
             
             //After 2 seconds, reload table view data
             self.delayWithSeconds(2) {
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
                 self.tableView.reloadData()
             }
         })

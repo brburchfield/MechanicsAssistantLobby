@@ -23,10 +23,13 @@ class EnterBusinessViewController: UIViewController {
     
     @IBOutlet weak var businessIDField: UITextField!
     @IBOutlet weak var locationField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        activityIndicator.isHidden = true
         
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -44,6 +47,8 @@ class EnterBusinessViewController: UIViewController {
     
     @IBAction func signInButtonPressed(_ sender: UIButton) {
         
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         self.businesses = []
         
         //Setup Firebase reference variables
@@ -52,7 +57,7 @@ class EnterBusinessViewController: UIViewController {
         ref.observe(.value, with: { (snapshot) -> Void in
             
             self.businesses = []
-            
+            var shouldShowAlert = true
             //add vehicles to vehicles variable
             for item in snapshot.children{
                 self.businesses.append(item as! DataSnapshot)
@@ -71,7 +76,9 @@ class EnterBusinessViewController: UIViewController {
                         currentBusinessColor = value?["color"] as? String ?? ""
                         currentBusinessEmail = value?["email"] as? String ?? ""
                         currentBusinessLogo = value?["logo"] as? String ?? ""
-                        
+                        shouldShowAlert = false
+                        self.activityIndicator.isHidden = true
+                        self.activityIndicator.stopAnimating()
                         self.performSegue(withIdentifier: "SuccessfulSignIn", sender: self)
                         return
                     } else {
@@ -81,6 +88,13 @@ class EnterBusinessViewController: UIViewController {
                     }
                     
                 }
+                
+                if shouldShowAlert == true {
+                    self.activityIndicator.isHidden = true
+                    self.activityIndicator.stopAnimating()
+                    self.displayAlert("No Business Found", alertString: "There is no business information associated with this data.")
+                }
+                
             }
             
         })

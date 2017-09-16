@@ -102,6 +102,10 @@
                                     <action selector="signInButtonPressed:" destination="2FY-tj-cFa" eventType="touchUpInside" id="ZZx-gz-C98"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BpW-1e-aol">
+                                <rect key="frame" x="0.5" y="0.5" width="768" height="1024"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -114,9 +118,13 @@
                             <constraint firstItem="Lv8-Sh-acN" firstAttribute="height" secondItem="OJK-qv-Xh0" secondAttribute="height" multiplier="0.4" id="MFs-Xw-jzL"/>
                             <constraint firstItem="ZGd-ZD-RNM" firstAttribute="centerX" secondItem="Lv8-Sh-acN" secondAttribute="centerX" id="Ogt-MY-qKP"/>
                             <constraint firstItem="OJK-qv-Xh0" firstAttribute="width" secondItem="1Of-mg-Ixd" secondAttribute="width" id="QBy-Ac-qMO"/>
+                            <constraint firstItem="BpW-1e-aol" firstAttribute="centerY" secondItem="1Of-mg-Ixd" secondAttribute="centerY" id="QCd-xo-jO7"/>
                             <constraint firstItem="OJK-qv-Xh0" firstAttribute="centerX" secondItem="1Of-mg-Ixd" secondAttribute="centerX" id="Sd2-As-CZ3"/>
                             <constraint firstItem="0SU-Nd-Zza" firstAttribute="leading" secondItem="1Of-mg-Ixd" secondAttribute="leading" id="Szc-CL-CF4"/>
                             <constraint firstItem="0SU-Nd-Zza" firstAttribute="top" secondItem="O3k-8u-qEw" secondAttribute="bottom" id="YGm-cV-jPX"/>
+                            <constraint firstItem="BpW-1e-aol" firstAttribute="width" secondItem="1Of-mg-Ixd" secondAttribute="width" id="hDw-4U-ys2"/>
+                            <constraint firstItem="BpW-1e-aol" firstAttribute="centerX" secondItem="1Of-mg-Ixd" secondAttribute="centerX" id="jfS-uE-nl5"/>
+                            <constraint firstItem="BpW-1e-aol" firstAttribute="height" secondItem="1Of-mg-Ixd" secondAttribute="height" id="jfl-sO-2I3"/>
                             <constraint firstItem="Lv8-Sh-acN" firstAttribute="width" secondItem="OJK-qv-Xh0" secondAttribute="width" multiplier="0.9" id="mvK-iY-5we"/>
                             <constraint firstItem="ZGd-ZD-RNM" firstAttribute="width" secondItem="Lv8-Sh-acN" secondAttribute="width" multiplier="0.3" id="ruC-L8-laY"/>
                             <constraint firstAttribute="trailing" secondItem="0SU-Nd-Zza" secondAttribute="trailing" id="tFT-6A-3bh"/>
@@ -125,6 +133,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dn9-d3-Zg7"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="BpW-1e-aol" id="j99-L8-28G"/>
                         <outlet property="businessIDField" destination="nhc-Pz-S1b" id="o6N-aW-WKW"/>
                         <outlet property="locationField" destination="2Mf-S0-Khl" id="iuQ-jj-aIy"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="SuccessfulSignIn" id="qV8-4g-evY"/>
@@ -182,7 +191,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="OjR-mf-8Cc">
-                                        <rect key="frame" x="0.0" y="28" width="753" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="754" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OjR-mf-8Cc" id="Nbl-uR-fin">
                                             <rect key="frame" x="0.0" y="0.0" width="753" height="43.5"/>
@@ -192,6 +201,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="MvD-4V-Ybi">
+                                <rect key="frame" x="0.5" y="0.5" width="768" height="1024"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -199,6 +212,8 @@
                             <constraint firstItem="S8X-gJ-m0k" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="6dU-bm-MMO"/>
                             <constraint firstItem="xym-7i-GMp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8zC-gO-AVR"/>
                             <constraint firstAttribute="trailing" secondItem="xym-7i-GMp" secondAttribute="trailing" id="AZ2-5A-cUF"/>
+                            <constraint firstItem="MvD-4V-Ybi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BBm-nv-TSr"/>
+                            <constraint firstItem="MvD-4V-Ybi" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="DgZ-Ez-hJr"/>
                             <constraint firstItem="xym-7i-GMp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="E9i-4H-LMx"/>
                             <constraint firstItem="2d3-VO-uZV" firstAttribute="centerX" secondItem="S8X-gJ-m0k" secondAttribute="centerX" id="Eij-uD-zCJ"/>
                             <constraint firstItem="2d3-VO-uZV" firstAttribute="width" secondItem="S8X-gJ-m0k" secondAttribute="width" multiplier="0.98" id="FFG-bB-Z9O"/>
@@ -206,11 +221,14 @@
                             <constraint firstItem="xym-7i-GMp" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.125" id="SQQ-cl-AT9"/>
                             <constraint firstItem="S8X-gJ-m0k" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SxF-Gu-wh6"/>
                             <constraint firstItem="S8X-gJ-m0k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tjd-p0-PEu"/>
+                            <constraint firstItem="MvD-4V-Ybi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bCX-Ph-gF7"/>
+                            <constraint firstItem="MvD-4V-Ybi" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="qXR-ij-7Zh"/>
                             <constraint firstItem="2d3-VO-uZV" firstAttribute="height" secondItem="S8X-gJ-m0k" secondAttribute="height" multiplier="0.78" id="x6h-iC-L74"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ftC-Ql-wIR"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="MvD-4V-Ybi" id="jew-hf-1QM"/>
                         <outlet property="backgroundImage" destination="S8X-gJ-m0k" id="ZI7-Sn-C2s"/>
                         <outlet property="logoView" destination="2Hr-Ef-VDI" id="bjs-T4-xmK"/>
                         <outlet property="tableView" destination="2d3-VO-uZV" id="pik-Oi-qHc"/>
@@ -283,7 +301,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="59G-5p-si1">
-                                <rect key="frame" x="7.5" y="589" width="753" height="409.5"/>
+                                <rect key="frame" x="7.5" y="472" width="753" height="543"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="PZp-VN-IF5">
@@ -309,24 +327,32 @@
                                 <color key="textColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DxI-fA-dOh">
+                                <rect key="frame" x="0.5" y="0.5" width="768" height="1024"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8YA-F6-vaC" firstAttribute="width" secondItem="YMX-ss-D8l" secondAttribute="width" id="910-6q-4qf"/>
-                            <constraint firstItem="59G-5p-si1" firstAttribute="centerY" secondItem="8YA-F6-vaC" secondAttribute="centerY" multiplier="1.55" id="9Tb-nw-zQi"/>
+                            <constraint firstItem="59G-5p-si1" firstAttribute="centerY" secondItem="8YA-F6-vaC" secondAttribute="centerY" multiplier="1.452" id="9Tb-nw-zQi"/>
                             <constraint firstItem="Pak-B9-bP9" firstAttribute="height" secondItem="8YA-F6-vaC" secondAttribute="height" multiplier="0.05" id="Ba7-hz-fmi"/>
                             <constraint firstItem="lbD-3i-zGx" firstAttribute="centerY" secondItem="8YA-F6-vaC" secondAttribute="centerY" multiplier="0.6" id="BhQ-kr-j01"/>
+                            <constraint firstItem="DxI-fA-dOh" firstAttribute="width" secondItem="YMX-ss-D8l" secondAttribute="width" id="G3W-g7-dk6"/>
                             <constraint firstItem="8YA-F6-vaC" firstAttribute="centerX" secondItem="YMX-ss-D8l" secondAttribute="centerX" id="PUf-5L-bFs"/>
                             <constraint firstItem="Pak-B9-bP9" firstAttribute="centerX" secondItem="8YA-F6-vaC" secondAttribute="centerX" id="T8F-hp-pXu"/>
-                            <constraint firstItem="59G-5p-si1" firstAttribute="height" secondItem="8YA-F6-vaC" secondAttribute="height" multiplier="0.4" id="UX0-g6-FKm"/>
+                            <constraint firstItem="59G-5p-si1" firstAttribute="height" secondItem="8YA-F6-vaC" secondAttribute="height" multiplier="0.53" id="UX0-g6-FKm"/>
                             <constraint firstItem="nKo-Sb-6HD" firstAttribute="height" secondItem="YMX-ss-D8l" secondAttribute="height" multiplier="0.125" id="VWy-AI-nsi"/>
                             <constraint firstItem="lbD-3i-zGx" firstAttribute="centerX" secondItem="8YA-F6-vaC" secondAttribute="centerX" id="VxZ-rv-iVb"/>
+                            <constraint firstItem="DxI-fA-dOh" firstAttribute="height" secondItem="YMX-ss-D8l" secondAttribute="height" id="cnM-F9-C3X"/>
                             <constraint firstItem="8YA-F6-vaC" firstAttribute="height" secondItem="YMX-ss-D8l" secondAttribute="height" id="fEO-lx-GRb"/>
                             <constraint firstItem="Pak-B9-bP9" firstAttribute="width" secondItem="8YA-F6-vaC" secondAttribute="width" multiplier="0.25" id="g7D-FA-s6y"/>
                             <constraint firstItem="nKo-Sb-6HD" firstAttribute="leading" secondItem="YMX-ss-D8l" secondAttribute="leading" id="kxM-ly-Gau"/>
                             <constraint firstItem="lbD-3i-zGx" firstAttribute="height" secondItem="8YA-F6-vaC" secondAttribute="height" multiplier="0.2" id="q8y-0I-G4c"/>
+                            <constraint firstItem="DxI-fA-dOh" firstAttribute="centerY" secondItem="YMX-ss-D8l" secondAttribute="centerY" id="snZ-An-X7s"/>
                             <constraint firstItem="8YA-F6-vaC" firstAttribute="centerY" secondItem="YMX-ss-D8l" secondAttribute="centerY" id="tcy-UK-vLr"/>
                             <constraint firstItem="Pak-B9-bP9" firstAttribute="centerY" secondItem="8YA-F6-vaC" secondAttribute="centerY" multiplier="0.85" id="wGe-Hl-NzR"/>
+                            <constraint firstItem="DxI-fA-dOh" firstAttribute="centerX" secondItem="YMX-ss-D8l" secondAttribute="centerX" id="wV7-US-CMR"/>
                             <constraint firstItem="59G-5p-si1" firstAttribute="width" secondItem="8YA-F6-vaC" secondAttribute="width" multiplier="0.98" id="wfQ-LM-ja4"/>
                             <constraint firstItem="59G-5p-si1" firstAttribute="centerX" secondItem="8YA-F6-vaC" secondAttribute="centerX" id="x19-aa-wQV"/>
                             <constraint firstAttribute="trailing" secondItem="nKo-Sb-6HD" secondAttribute="trailing" id="y3z-Ao-klw"/>
@@ -335,7 +361,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="3Na-dp-Tf5"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="DxI-fA-dOh" id="wYv-W9-VLS"/>
+                        <outlet property="backgroundImage" destination="8YA-F6-vaC" id="94A-r9-WxY"/>
                         <outlet property="completionImage" destination="lbD-3i-zGx" id="J7l-TL-481"/>
+                        <outlet property="logoView" destination="g5J-WU-ymd" id="R6k-BB-Hes"/>
                         <outlet property="percentLabel" destination="Pak-B9-bP9" id="Trv-H0-6W4"/>
                         <outlet property="tableView" destination="59G-5p-si1" id="Gha-eK-mLr"/>
                     </connections>

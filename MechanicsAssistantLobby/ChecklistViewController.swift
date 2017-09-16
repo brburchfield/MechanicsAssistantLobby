@@ -20,6 +20,9 @@ class ChecklistViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var percentLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var completionImage: UIImageView!
+    @IBOutlet weak var logoView: UIImageView!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //set empty variables
     var airFilterStatus = ""
@@ -58,6 +61,28 @@ class ChecklistViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //load business logo and background color
+        //Decode logo image from base64 string
+        let dataDecoded : Data = Data(base64Encoded: currentBusinessLogo, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        logoView.image = decodedimage
+        
+        if currentBusinessColor == "0" {
+            backgroundImage.image = UIImage(named: "BackgroundBlue")
+        } else if currentBusinessColor == "1" {
+            backgroundImage.image = UIImage(named: "BackgroundRed")
+        } else if currentBusinessColor == "2" {
+            backgroundImage.image = UIImage(named: "BackgroundGreen")
+        } else if currentBusinessColor == "3" {
+            backgroundImage.image = UIImage(named: "BackgroundYellow")
+        } else if currentBusinessColor == "4" {
+            backgroundImage.image = UIImage(named: "BackgroundCyan")
+        } else if currentBusinessColor == "5" {
+            backgroundImage.image = UIImage(named: "BackgroundWhite")
+        } else {
+            backgroundImage.image = UIImage(named: "BackgroundBlue")
+        }
         
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -154,6 +179,8 @@ class ChecklistViewController: UIViewController, UITableViewDataSource, UITableV
             })
             
             self.delayWithSeconds(1){
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
                 self.tableView.reloadData()
             }
 
@@ -218,7 +245,11 @@ class ChecklistViewController: UIViewController, UITableViewDataSource, UITableV
             self.navigationController?.popViewController(animated: true)
         })
         
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
