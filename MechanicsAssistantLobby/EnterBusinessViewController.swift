@@ -47,57 +47,98 @@ class EnterBusinessViewController: UIViewController {
     
     @IBAction func signInButtonPressed(_ sender: UIButton) {
         
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
-        self.businesses = []
-        
-        //Setup Firebase reference variables
-        let ref = Database.database().reference(withPath: "businesses")
-        // Listen for vehicles added to the Firebase database
-        ref.observe(.value, with: { (snapshot) -> Void in
+        //If errors, handle them
+        if businessIDField.text == "" || locationField.text == "" {
             
-            self.businesses = []
-            var shouldShowAlert = true
-            //add vehicles to vehicles variable
-            for item in snapshot.children{
-                self.businesses.append(item as! DataSnapshot)
+            if businessIDField.text == "" {
+                showTextFieldPlaceholder(textfield: businessIDField, placeholderString: "Enter a business ID")
             }
             
-            self.delayWithSeconds(1){
-                var itemNumber = 0
-                for item in self.businesses {
+            if locationField.text == "" {
+                showTextFieldPlaceholder(textfield: locationField, placeholderString: "Enter a location")
+            }
+            
+        } else {
+            
+            
+            
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+            self.businesses = []
+            
+            //Setup Firebase reference variables
+            let ref = Database.database().reference(withPath: "businesses")
+            // Listen for vehicles added to the Firebase database
+            ref.observe(.value, with: { (snapshot) -> Void in
+                
+                self.businesses = []
+                var shouldShowAlert = true
+                //add vehicles to vehicles variable
+                for item in snapshot.children{
+                    self.businesses.append(item as! DataSnapshot)
+                }
+                
+                self.delayWithSeconds(1){
+                    var itemNumber = 0
+                    for item in self.businesses {
+                        
+                        let value = item.value as? NSDictionary
+                        let id = value?["id"] as? String ?? ""
+                        if id == self.businessIDField.text {
+                            currentBusinessID = self.businessIDField.text!
+                            currentBusinessLocation = self.locationField.text!
+                            currentBusinessName = value?["name"] as? String ?? ""
+                            currentBusinessColor = value?["color"] as? String ?? ""
+                            currentBusinessEmail = value?["email"] as? String ?? ""
+                            currentBusinessLogo = value?["logo"] as? String ?? ""
+                            shouldShowAlert = false
+                            self.activityIndicator.isHidden = true
+                            self.activityIndicator.stopAnimating()
+                            self.performSegue(withIdentifier: "SuccessfulSignIn", sender: self)
+                            return
+                        } else {
+                            
+                            itemNumber += 1
+                            
+                        }
+                        
+                    }
                     
-                    let value = item.value as? NSDictionary
-                    let id = value?["id"] as? String ?? ""
-                    if id == self.businessIDField.text {
-                        currentBusinessID = self.businessIDField.text!
-                        currentBusinessLocation = self.locationField.text!
-                        currentBusinessName = value?["name"] as? String ?? ""
-                        currentBusinessColor = value?["color"] as? String ?? ""
-                        currentBusinessEmail = value?["email"] as? String ?? ""
-                        currentBusinessLogo = value?["logo"] as? String ?? ""
-                        shouldShowAlert = false
+                    if shouldShowAlert == true {
                         self.activityIndicator.isHidden = true
                         self.activityIndicator.stopAnimating()
-                        self.performSegue(withIdentifier: "SuccessfulSignIn", sender: self)
-                        return
-                    } else {
-                        
-                        itemNumber += 1
-                        
+                        self.displayAlert("No Business Found", alertString: "There is no business information associated with this data.")
                     }
                     
                 }
                 
-                if shouldShowAlert == true {
-                    self.activityIndicator.isHidden = true
-                    self.activityIndicator.stopAnimating()
-                    self.displayAlert("No Business Found", alertString: "There is no business information associated with this data.")
-                }
-                
-            }
+            })
             
-        })
+        }
+        
+    }
+    
+    //function to display errors at text fields
+    func showTextFieldPlaceholder(textfield: UITextField, placeholderString: String){
+        
+        textfield.text = ""
+        
+        //create shake animation
+        let shake = CAKeyframeAnimation( keyPath:"transform" )
+        shake.values = [
+            NSValue( caTransform3D:CATransform3DMakeTranslation(-5, 0, 0 ) ),
+            NSValue( caTransform3D:CATransform3DMakeTranslation( 5, 0, 0 ) )
+        ]
+        shake.autoreverses = true
+        shake.repeatCount = 2
+        shake.duration = 7/100
+        
+        if textfield.text == "" {
+            textfield.attributedPlaceholder = NSAttributedString(string: placeholderString, attributes: [NSForegroundColorAttributeName: UIColor.red])
+            textfield.layer.add(shake, forKey: nil)
+        }
+        
+        
     }
     
     //function for displaying an alert controller
