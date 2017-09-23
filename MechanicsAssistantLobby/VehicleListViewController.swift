@@ -78,6 +78,7 @@ class VehicleListViewController: UIViewController, UITableViewDataSource, UITabl
         let ref = Database.database().reference(withPath: "vehicles")
         // Listen for vehicles added to the Firebase database
         ref.observe(.value, with: { (snapshot) -> Void in
+            
             self.tempVehicles = []
             self.vehicles = []
             
@@ -86,7 +87,7 @@ class VehicleListViewController: UIViewController, UITableViewDataSource, UITabl
                 self.tempVehicles.append(item as! DataSnapshot)
             }
             
-            self.delayWithSeconds(1) {
+            
                 for item in self.tempVehicles {
                     let value = item.value as? NSDictionary
                     let business = value?["business"] as? String ?? ""
@@ -95,13 +96,14 @@ class VehicleListViewController: UIViewController, UITableViewDataSource, UITabl
                         self.vehicles.append(item)
                     }
                 }
-            }
+            
             
             //After 2 seconds, reload table view data
-            self.delayWithSeconds(2) {
+            self.delayWithSeconds(1) {
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
                 self.tableView.reloadData()
+                
             }
         })
         

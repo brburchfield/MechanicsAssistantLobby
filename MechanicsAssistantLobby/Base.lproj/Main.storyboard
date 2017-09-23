@@ -194,7 +194,7 @@
                                         <rect key="frame" x="0.0" y="28" width="753" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OjR-mf-8Cc" id="Nbl-uR-fin">
-                                            <rect key="frame" x="0.0" y="0.0" width="753" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="753" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>

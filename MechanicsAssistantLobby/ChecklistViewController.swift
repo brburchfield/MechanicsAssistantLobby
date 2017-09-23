@@ -100,6 +100,7 @@ class ChecklistViewController: UIViewController, UITableViewDataSource, UITableV
             //delete statuses information and reset completion number (so that Firebase change doesn't append when data is changed)
             self.statuses = []
             self.completionNumber = 0
+            self.totalNumberOfServices = 15
             
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -205,7 +206,6 @@ class ChecklistViewController: UIViewController, UITableViewDataSource, UITableV
             if value?["mainService2"] as? String == "yes"  { self.completionNumber += 1 }
             if value?["mainService3"] as? String == "yes"  { self.completionNumber += 1 }
             if value?["mainService4"] as? String == "yes"  { self.completionNumber += 1 }
-            
             //set completion percet variable to percentage of statuses completed
             let completionPercent =  (100 * self.completionNumber) / self.totalNumberOfServices
             
